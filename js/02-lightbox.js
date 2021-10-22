@@ -7,13 +7,13 @@ const divGalleryEl = document.querySelector('.gallery')
 
 function galleryMarkup() {
        return galleryItems.map(( {preview, original, description} ) => {
-        return `<a class="gallery__item" href=${original}>
+        return `<li><a class="gallery__item" href=${original}>
         <img class="gallery__image" loading="lazy" src=${preview} alt=${description} title=${description}/>
-      </a>`
+      </a></li>`
     }).join('')
 }
 
 divGalleryEl.insertAdjacentHTML('beforeend', galleryMarkup(galleryItems))
 
-let gallery = new SimpleLightbox('.gallery a');
+let gallery = new SimpleLightbox('.gallery a', { captionDelay: 250 });
 gallery.on('show.simplelightbox', function () {})

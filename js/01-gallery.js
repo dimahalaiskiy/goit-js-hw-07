@@ -22,6 +22,7 @@ divGalleryEl.insertAdjacentHTML('beforeend', galleryMarkup(galleryItems))
 const onClickCurrentPhoto = document.querySelector('.gallery')
 
 function openCurrentOriginalPhoto(e) {
+    if(e.target === onClickCurrentPhoto) return
     e.preventDefault()
     const modalCurrentPhoto = e.target.dataset.source
     
@@ -34,7 +35,7 @@ function openCurrentOriginalPhoto(e) {
     function escapeModalPhoto(e) {
         const isOpen = document.querySelector('.basicLightbox')
         if(!isOpen) {
-            return
+            return window.removeEventListener('keyup', escapeModalPhoto)
         }
 
         if(e.key === 'Escape') 
